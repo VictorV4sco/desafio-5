@@ -1,12 +1,13 @@
 package com.devsuperior.demo.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.demo.dto.ProductDTO;
+import com.devsuperior.demo.dto.ProductMinDTO;
 import com.devsuperior.demo.entities.Product;
 import com.devsuperior.demo.repositories.ProductRepository;
 
@@ -23,9 +24,10 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<ProductDTO> findAll() {
-		return productRepository.findAll().stream().map(x -> new ProductDTO(x)).toList();
-	}
+    public Page<ProductMinDTO> findAll(String name, Pageable pageable) {
+        Page<Product> result = productRepository.searchByName(name, pageable);
+        return result.map(x -> new ProductMinDTO(x));
+    }
 
 	@Transactional
 	public ProductDTO insert(ProductDTO dto) {

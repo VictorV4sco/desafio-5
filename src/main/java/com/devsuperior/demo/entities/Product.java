@@ -1,5 +1,6 @@
 package com.devsuperior.demo.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,22 @@ public class Product {
 	private Long id;
 	private String name;
 	
+	@Column(columnDefinition = "TEXT")
+    private String description;
+    private Double price;
+    private String imgUrl;
+    
+    public Product() {
+    }
+	
+	public Product(Long id, String name, String description, Double price, String imgUrl) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.setPrice(price);
+		this.setImgUrl(imgUrl);
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -29,5 +46,21 @@ public class Product {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 }
