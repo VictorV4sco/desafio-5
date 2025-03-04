@@ -32,6 +32,8 @@ public class User implements UserDetails{
     @Column(unique = true)
     private String email;
     private String password;
+    private String phone;
+    private LocalDate birthDate;
     
     @ManyToMany
 	@JoinTable(
@@ -42,62 +44,80 @@ public class User implements UserDetails{
 
     public User() {
     }
-
-    public User(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return Objects.equals(id, user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
     
-    public void addRole(Role role) {
+    public User(Long id, String name, String email, String password, String phone, LocalDate birthDate,
+			Set<Role> roles) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+		this.birthDate = birthDate;
+		this.roles = roles;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(birthDate, email, id, name, password, phone, roles);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(birthDate, other.birthDate) && Objects.equals(email, other.email)
+				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(password, other.password) && Objects.equals(phone, other.phone)
+				&& Objects.equals(roles, other.roles);
+	}
+
+	public void addRole(Role role) {
 		roles.add(role);
 	}
     
@@ -142,5 +162,21 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
 	}
 }
