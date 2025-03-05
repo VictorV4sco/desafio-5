@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.demo.dto.CategoryDTO;
+import com.devsuperior.demo.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
