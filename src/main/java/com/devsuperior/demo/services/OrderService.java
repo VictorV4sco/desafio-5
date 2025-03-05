@@ -13,10 +13,10 @@ import com.devsuperior.demo.entities.OrderItem;
 import com.devsuperior.demo.entities.OrderStatus;
 import com.devsuperior.demo.entities.Product;
 import com.devsuperior.demo.entities.User;
-import com.devsuperior.demo.exceptions.ResourceNotFoundException;
 import com.devsuperior.demo.repositories.OrderItemRepository;
 import com.devsuperior.demo.repositories.OrderRepository;
 import com.devsuperior.demo.repositories.ProductRepository;
+import com.devsuperior.demo.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class OrderService {

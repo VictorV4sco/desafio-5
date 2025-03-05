@@ -1,4 +1,4 @@
-package com.devsuperior.demo.exceptions;
+package com.devsuperior.demo.services.exceptions;
 
 @SuppressWarnings("serial")
 public class DatabaseException extends RuntimeException{

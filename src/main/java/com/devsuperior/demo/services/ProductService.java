@@ -13,9 +13,9 @@ import com.devsuperior.demo.dto.ProductDTO;
 import com.devsuperior.demo.dto.ProductMinDTO;
 import com.devsuperior.demo.entities.Category;
 import com.devsuperior.demo.entities.Product;
-import com.devsuperior.demo.exceptions.DatabaseException;
-import com.devsuperior.demo.exceptions.ResourceNotFoundException;
 import com.devsuperior.demo.repositories.ProductRepository;
+import com.devsuperior.demo.services.exceptions.DatabaseException;
+import com.devsuperior.demo.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
 

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.demo.entities.User;
-import com.devsuperior.demo.exceptions.ForbiddenException;
+import com.devsuperior.demo.services.exceptions.ForbiddenException;
 
 @Service
 public class AuthService {
